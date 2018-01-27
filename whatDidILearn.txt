@@ -1,6 +1,0 @@
-
-- add variables to "export class <component>" in the component's typescript file to make them available in the component's html file
-
-- string interpolation (i.e. the {{serverId}} part) works as long as the stuff inside the curly brackets can be resolved into a string.
-    numbers, strings, methods, terneary exp can be placed inside {{}}, but multi-line logic like if statements aren't allowed
-    
