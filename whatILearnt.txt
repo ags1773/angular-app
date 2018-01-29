@@ -1,5 +1,6 @@
-Assignment
+Directives - ngIf
 
-1) Add input field which updates a property "username" (use two-way binding)
-2) Output the username in a para below the input (Use string interpolation)
-3) Add a clear button which resets the username and can only be clicked if username is NOT empty
+ngIf is a built-in directive. It conditionally shows/hides an html element, based on IF condition
+
+*ngIf: The '*' is extra info for Angular. It's added because ngIf a structural directive. It changes the strucrure
+          of the DOM (i.e. it either adds or removes the DOM element)

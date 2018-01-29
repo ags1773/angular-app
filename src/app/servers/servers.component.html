@@ -1,18 +1,12 @@
-<label>Server Name</label>
-
 <div class="form-inline">
   <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="userName">
-    <button type="button" class="btn btn-success" [disabled]="userName === ''" (click)="userName = ''">Clear</button>
+    <label>Server Name</label>
+    <input type="text" class="form-control" [(ngModel)]="serverName">
+    <button type="button" class="btn btn-info" (click)="onCreateServer()">Add Server</button>
   </div>
 </div>
 <br>
-<h2>Dummy Paragraph</h2>
-<p>Lorem <span>{{userName}}</span> ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ipsa <span>{{userName}}</span> cupiditate
-   voluptate! Nemo repellendus <span>{{userName}}</span> porro unde facere magni aspernatur officia ad quas
-   blanditiis velit <span>{{userName}}</span> tempore iure fuga, ullam <span>{{userName}}</span> id eos dolorem,
-   esse omnis aut placeat nihil explicabo minus voluptatem est. Dolores dolor ex saepe possimus odio minus
-   voluptates molestias <span>{{userName}}</span> adipisci?</p>
+<p *ngIf="serverCreated">Server created. It's name is: {{serverName}}</p>
 
 <!-- <app-server></app-server>
 <app-server></app-server> -->
