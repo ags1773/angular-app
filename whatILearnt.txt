@@ -1,6 +1,12 @@
-Directives - ngIf
+Directives - ngStyle
 
-ngIf is a built-in directive. It conditionally shows/hides an html element, based on IF condition
+background Color of para changes using ngStyle based on whether server is online or offline.
+Server status (online/offline) is decided randomly
 
-*ngIf: The '*' is extra info for Angular. It's added because ngIf a structural directive. It changes the strucrure
-          of the DOM (i.e. it either adds or removes the DOM element)
+We're using [ngStyle] i.e. we are using property binding '[]' on this directive to dynamically change its value
+[ngStyle] = "{'background-color':'red'}"
+[ngStyle] = "{backgroundColor:'red'}" .....Both are valid
+
+note there's no '*' prefix like *ngIf because ngStyle doesn't add/remove the <p> element line ngIf
+
+constructor() is a built-in typescript method each typescript class has, which is called when the component is created
