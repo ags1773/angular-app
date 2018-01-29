@@ -1,10 +1,5 @@
-Two-way data binding
+Assignment
 
-Client Side: <input> element
-Server side: "serverName" variable
-
-change value of either, and it updates the other part. This is two-way data binding.
-
-In order to use two way data binding, we need "ngModel". Add following to app.module.ts file:
-import { FormsModule } from '@angular/forms';
-add "FormsModule" to imports array
+1) Add input field which updates a property "username" (use two-way binding)
+2) Output the username in a para below the input (Use string interpolation)
+3) Add a clear button which resets the username and can only be clicked if username is NOT empty
