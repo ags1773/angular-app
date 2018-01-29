@@ -1,7 +1,8 @@
-Event Binding
+Passing data with Event Binding
 
-"click" event on <button> is bound to the method "onCreareServer()"
+html input element is bound to onUpdateServerName($event) method. $event is a reserved angular keyword, contains lots of
+things, one of which is the user's input.
 
-onCreareServer() method simply changes the value of property "serverCreationStatus"
-to "Server Created", which is displayed on the page using string interpolation
-<p>{{serverCreationStatus}}</p>
+"event.target.value" i.e. the typed input, is assigned to "serverName" property, and it is displayed using string interpolation.
+
+NOTE: This is NOT two-way data binding
