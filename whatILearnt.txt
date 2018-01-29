@@ -1,0 +1,7 @@
+Event Binding
+
+"click" event on <button> is bound to the method "onCreareServer()"
+
+onCreareServer() method simply changes the value of property "serverCreationStatus"
+to "Server Created", which is displayed on the page using string interpolation
+<p>{{serverCreationStatus}}</p>
