@@ -1,6 +1,6 @@
 <button class="btn btn-info" (click)="onBtnClick()">Display Details</button>
 <p *ngIf="showArray">Spicy jalapeno bacon ipsum dolor amet pig eu rump t-bone buffalo dolore brisket kielbasa aliqua doner sunt ipsum. Doner shankle pig spare ribs, quis velit consectetur biltong. Corned beef in ex brisket kielbasa, landjaeger t-bone sunt jowl pork belly do. Burgdoggen prosciutto adipisicing spare ribs shoulder magna velit. Eiusmod in elit sint, short ribs est shoulder.</p>
-<div *ngFor="let cnt of clickArray"
-  [ngStyle]="{backgroundColor: (cnt>4)?('blue'):('inherit')}"
-  [ngClass]="{'specialSnowflake': (cnt>4)?(true):(false)}"> {{cnt}}
+<div *ngFor="let cnt of clickArray; let i = index"
+  [ngStyle]="{backgroundColor: (i>=4)?('blue'):('inherit')}"
+  [ngClass]="{'specialSnowflake': (i>=4)?(true):(false)}"> {{cnt}}
 </div>

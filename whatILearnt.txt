@@ -1,12 +1,4 @@
-Directives - ngStyle
+Directives - assignment 3 part II
 
-background Color of para changes using ngStyle based on whether server is online or offline.
-Server status (online/offline) is decided randomly
-
-We're using [ngStyle] i.e. we are using property binding '[]' on this directive to dynamically change its value
-[ngStyle] = "{'background-color':'red'}"
-[ngStyle] = "{backgroundColor:'red'}" .....Both are valid
-
-note there's no '*' prefix like *ngIf because ngStyle doesn't add/remove the <p> element line ngIf
-
-constructor() is a built-in typescript method each typescript class has, which is called when the component is created
+*ngFor="let cnt of clickArray; let i = index" -> the var i contains index. ('index' is a reserved keyword)
+this is used because date object can't be used to keep count; unlike the cnt used previously

@@ -12,7 +12,8 @@ export class Assignment3Component implements OnInit {
 
   onBtnClick() {
     this.showArray = !this.showArray;
-    this.clickArray.push(this.clickArray.length + 1);
+    // this.clickArray.push(this.clickArray.length + 1);
+    this.clickArray.push(new Date());
   }
 
   ngOnInit() {
