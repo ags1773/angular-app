@@ -8,19 +8,17 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class CockpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output() bpCreated = new EventEmitter<{bpName: string, bpContent: string}>();
-  serverName = "";
-  serverContent = "";
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onAddServer(){
-    this.serverCreated.emit({serverName: this.serverName, serverContent: this.serverContent});
+  onAddServer(srvName, srvContent){
+    this.serverCreated.emit({serverName: srvName, serverContent: srvContent});
   }
-  onAddBluePrint(){
-    this.bpCreated.emit({bpName: this.serverName, bpContent: this.serverContent});
+  onAddBluePrint(srvName, srvContent){
+    this.bpCreated.emit({bpName: srvName, bpContent: srvContent});
   }
 
 }

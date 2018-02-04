@@ -1,23 +1,6 @@
-View encapsulation - Fancy way of saying css styles applied to one component stay applied for that component and don't
-    get applied to it's child components, unless told
+local reference: <input #variableName>
 
-Angular does this by assigning an attribute to every html element of a component.
+'variableName' will hold a reference to the <div> element (including all its properties) and will be accessable throughout
+the html template
 
-eg. in app.component.html, Angular will give each HTML element an attribute '_ngcontent-c1'
-    then, all styles will be applied using that attribute
-    p[_ngcontent-c1]{
-      color: blue;
-    }
-    form[_ngcontent-c1]{
-      margin-right: 0;
-    }
-This CSS wont be applied to any other components as that component's assigned attribute will be different
-unless ViewEncapsulation.None is set for it
-
-import{ ViewEncapsulation } from '@angular/core'
-
-@Component({
-  encapsulation: ViewEncapsulation.Emulated   //None, Native
-})
-
-'ViewEncapsulation.None' removes addition of the attribute, so CSS styling will trickle down to child components
+the 'value' can be got by doing variableName.value. 'value' is available because it's an <input>
