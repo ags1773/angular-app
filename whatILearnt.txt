@@ -1,4 +1,50 @@
-Directives - assignment 3 part II
+the application is split into three components:
+  1) cockpit  - (user input) contains input form and submit buttons
+  2) server-element - (output) contains the cards created which display the server/blueprint name and content
+  3) the app.component itself
 
-*ngFor="let cnt of clickArray; let i = index" -> the var i contains index. ('index' is a reserved keyword)
-this is used because date object can't be used to keep count; unlike the cnt used previously
+--------------------------------------------------- server-element -----------------------------------------------------------
+this component displays the data in variable 'card'
+<app-server-element></app-server-element> is called for every iteration of the 'serverElements[]' array by app.component.html
+
+card: {type: string, name: string, content:string}; --> This is just variable declaration,
+        {type: string, name: string, content:string} is the type declaration for variable 'card'
+@Input() --> this is a decorator which lets <app-server-element> in app.component.html send data to variable 'card' or it
+        makes 'card' available to the outside world
+@Input('srvElement') --> the 'srvElement' is an alias name for variable 'card'. Because of this, 'card' is available as
+          'srvElement' outside server-element.component.ts
+'Input' needs to be imported from '@angular/core'
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------  cockpit   ------------------------------------------------------------
+this component takes user input, and emits it as an event. This event is to be captured by <app-cockpit> in the
+app.component.html file.
+
+In order to create a custom event (for eg. click is a built-in event), we add properties 'serverCreated' and 'bpCreated' .
+serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+    --> here, we have declared 'serverCreated' property as of type EventEmitter.
+    --> EventEmitter<{type declaration}> is a generic type in typescript
+          the () at end calls the constructor
+in conclusion; serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+    - declares property 'serverCreated' which contains an 'event emitter' type object
+    - this object enables us to emit 'serverCreated' as a custom event
+    - the event emitter is of type 'serverName: string, serverContent: string'
+
+Now, when the user clicks the button 'Add Server', onAddServer() is run, which actually emits the event 'serverCreated'
+using the .emit() method.
+    - this.serverCreated.emit({serverName: this.serverName, serverContent: this.serverContent});
+
+Finally, we must add the decorator @Output to serverCreated and bpCreated; to make it "Listenable" from outside the
+cockpit.component.ts file. Also add the Import from @angular/core
+    - @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------ app.component.ts ------------------------------------------------------------
+This is the parent for both the cockpit and server-element components
+
+- It takes input from <app-cockpit>
+- uses event binding to listen to events (serverCreated) & (bpCreated)
+- Pushes name, content and type to the serverElements array
+- creates <app-server-element></app-server-element> for every element in the serverElements array using ngFor
+- passes "serverElement" object containing server type, name and content to the app-server-element component to alias 'srvElement' using property binding
+------------------------------------------------------------------------------------------------------------------------------
