@@ -1,6 +1,20 @@
-local reference: <input #variableName>
+ViewChild method to access HTML in .ts 
 
-'variableName' will hold a reference to the <div> element (including all its properties) and will be accessable throughout
-the html template
+Using ViewChild decorator, we can directly get access to DOM elements from within typesctipt file (i.e. without passing local
+reference as function parameter as we did previously)
 
-the 'value' can be got by doing variableName.value. 'value' is available because it's an <input>
+import ViewChild from @angular/core
+
+@ViewChild('serverContentInput') --> serverContentInput is the local reference on the target HTML component in the DOM
+@ViewChild(app-cockpit) --> this too will work, it now targets the 1st occurance of <app-cockpit> HTML tag
+
+@ViewChild('serverContentInput') serverContentInput: ElementRef; --> now, we can access the HTML element targeted by the local
+reference '#serverContentInput' via the 'serverContentInput' property.
+Note that 'ElementRef' too needs to be imported from @angular/core. It's an angular type.
+
+console.log(this.serverContentInput.nativeElement.value); --> will give its value
+
+**IMP**
+Do Not set values of HTML elements using ViewChild method, for eg.
+this.serverContentInput.nativeElement.value = "Something"
+although it'll work, it isn't a good practice
