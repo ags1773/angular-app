@@ -1,20 +1,31 @@
-ViewChild method to access HTML in .ts 
+Projecting content to custom component using ng-content.
 
-Using ViewChild decorator, we can directly get access to DOM elements from within typesctipt file (i.e. without passing local
-reference as function parameter as we did previously)
+In cases when you want to add content to a component from a parent component, simply adding HTML within the component HTML tags
+doesn't work.
 
-import ViewChild from @angular/core
+Anything placed within the opening and closing tags of your custom elements (in parent HTML file) is ignored & removed from DOM
 
-@ViewChild('serverContentInput') --> serverContentInput is the local reference on the target HTML component in the DOM
-@ViewChild(app-cockpit) --> this too will work, it now targets the 1st occurance of <app-cockpit> HTML tag
+<app-server-element>           -------> Custom component
+  <p>STUFF</p>                 -------> This is ignored
+</app-server-element>
 
-@ViewChild('serverContentInput') serverContentInput: ElementRef; --> now, we can access the HTML element targeted by the local
-reference '#serverContentInput' via the 'serverContentInput' property.
-Note that 'ElementRef' too needs to be imported from @angular/core. It's an angular type.
+<ng-content></ng-content> is a directive. It serves as a hook to mark a place for angular where it should place any content that
+it finds between your custom tags.
 
-console.log(this.serverContentInput.nativeElement.value); --> will give its value
+**************************
+** component.html file: **
+**************************
 
-**IMP**
-Do Not set values of HTML elements using ViewChild method, for eg.
-this.serverContentInput.nativeElement.value = "Something"
-although it'll work, it isn't a good practice
+<div class="card mt-3">
+  <div class="card-header">
+    {{card.name}}
+  </div>
+  <ng-content></ng-content>     ------> Hook
+</div>
+
+***************************************
+** app.component.html file: (Parent) **
+***************************************
+<app-server-element>           -------> Custom component
+  <p>STUFF</p>                 -------> NOw, this will work. <p>STUFF</p> will take place of <ng-content></ng-content>
+</app-server-element>

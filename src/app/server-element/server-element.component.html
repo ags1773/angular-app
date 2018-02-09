@@ -2,8 +2,9 @@
   <div class="card-header">
     {{card.name}}
   </div>
-  <div class="card-body">
+  <ng-content></ng-content>
+  <!-- <div class="card-body">
     <p class="card-text" *ngIf="card.type === 'server'" style="color : red">{{card.content}}</p>
     <p class="card-text" *ngIf="card.type === 'bp'" style="color : blue">{{card.content}}</p>
-  </div>  
+  </div>   -->
 </div>

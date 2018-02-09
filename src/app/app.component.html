@@ -9,5 +9,10 @@
   <app-server-element
     *ngFor="let serverElement of serverElements"
     [srvElement]="serverElement"
-  ></app-server-element>
+  >
+  <div class="card-body">
+    <p class="card-text" *ngIf="serverElement.type === 'server'" style="color : red">{{serverElement.content}}</p>
+    <p class="card-text" *ngIf="serverElement.type === 'bp'" style="color : blue">{{serverElement.content}}</p>
+  </div>
+  </app-server-element>
 </div>
