@@ -1,0 +1,10 @@
+<div class="card border-0">
+  <img class="mr-auto d-block border mw-100" src="{{recipe.image}}">
+  <div class="card-body px-0">
+    <h2 class="card-title">{{recipe.title}}</h2>
+    <p class="card-text">{{recipe.description}}</p>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} - ({{ingredient.quantity}})</li>
+    </ul>
+  </div>
+</div>
