@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Recipe } from "../../models/recipe";
+import { Recipe } from "../recipes.model"
 import { RECIPES } from "../../mock-data/mock-recipes";
 
 @Component({
@@ -10,14 +10,14 @@ import { RECIPES } from "../../mock-data/mock-recipes";
 export class RecipeListComponent implements OnInit {
   mockRecipes:Recipe[] = RECIPES;
   @Output() recipeItemClicked = new EventEmitter<Recipe>();
-  @Output() addRecipeClicked = new EventEmitter<any>();
+  @Output() addRecipeClicked = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
-    if(this.mockRecipes[0]){
-      this.recipeItemClicked.emit(this.mockRecipes[0]);
-    }
+    // if(this.mockRecipes[0]){
+    //   this.recipeItemClicked.emit(this.mockRecipes[0]);
+    // }
   }
   onAddRecipe(){
     this.addRecipeClicked.emit(null);

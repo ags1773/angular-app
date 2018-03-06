@@ -1,3 +1,8 @@
-<p>
-  shopping-list works!
-</p>
+<div class="row">
+  <div class="col-10">
+    <app-shopping-edit (onAddIngredient)="onAddIngredient($event)"></app-shopping-edit>
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let ingredient of ingredients">{{ingredient.name}} - ({{ingredient.quantity}})</div>
+    </div>
+  </div>
+</div>
