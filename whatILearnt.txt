@@ -1,31 +1,9 @@
-Projecting content to custom component using ng-content.
+*************************************
+**      Directives - Deep Dive     **
+*************************************
 
-In cases when you want to add content to a component from a parent component, simply adding HTML within the component HTML tags
-doesn't work.
+Directives are of two types:
+  1) Attribute Directives (ngClass, ngStyle ...) - only change properties of the element
+  2) Structural Directives (*ngFor and *ngIf) - adds/removes the element from the DOM
 
-Anything placed within the opening and closing tags of your custom elements (in parent HTML file) is ignored & removed from DOM
-
-<app-server-element>           -------> Custom component
-  <p>STUFF</p>                 -------> This is ignored
-</app-server-element>
-
-<ng-content></ng-content> is a directive. It serves as a hook to mark a place for angular where it should place any content that
-it finds between your custom tags.
-
-**************************
-** component.html file: **
-**************************
-
-<div class="card mt-3">
-  <div class="card-header">
-    {{card.name}}
-  </div>
-  <ng-content></ng-content>     ------> Hook
-</div>
-
-***************************************
-** app.component.html file: (Parent) **
-***************************************
-<app-server-element>           -------> Custom component
-  <p>STUFF</p>                 -------> NOw, this will work. <p>STUFF</p> will take place of <ng-content></ng-content>
-</app-server-element>
+### Both *ngFor and *ngIf can't be placed on the same component

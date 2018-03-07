@@ -6,15 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showRecipe:boolean = true;
-  showShoppingList:boolean = false;
+  numbers = [1, 2, 3, 4, 5];
+  onlyOdd = false;
 
-  onRecipesNavClicked(){
-    this.showRecipe = true;
-    this.showShoppingList = false;
-  }
-  onShoppingListNavClicked(){
-    this.showRecipe = false;
-    this.showShoppingList = true;
-  }
 }
