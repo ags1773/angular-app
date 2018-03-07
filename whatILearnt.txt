@@ -2,7 +2,23 @@
 **      Directives - Deep Dive     **
 *************************************
 
-Using renderer is fine, another simpler way is to use hostbinding
+Binding to directive properties:
 
-@HostBinding('style.backgroundColor') - style.backgroundColor is the property of the host to which we want to bind
-                                        backgroundColor, not background-color because we're accessing DOM property
+@Input() defaultColor: string = 'transparent';
+@Input() highlightColor: string = 'tomato';
+.
+.
+<p appBetterHighlight [defaultColor]="'purple'" [highlightColor]="'green'">Better directive test para</p>
+
+user can set default & highlight color from html using property binding.
+Angular figures out that 'defaultColor' and 'highlightColor' are properties of the custom directive 'appBetterHighlight'.
+
+---------------------------------------
+Also note, this too works
+@Input('appBetterHighlight') defaultColor: string = 'transparent';
+.
+.
+<p [appBetterHighlight]="'purple'" [highlightColor]="'green'">Better directive test para</p>
+
+here, we are giving "@Input() defaultColor" an alias that's same as the custom directive's name i.e. "appBetterHighlight"
+So now, we can directly use property binding on the directive to pass defaultColor value i.e. [appBetterHighlight]="'purple'"

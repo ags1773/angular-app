@@ -30,5 +30,6 @@
 
   <br>
   <p appBasicHighlight>Custom directive test para</p>
-  <p appBetterHighlight>Better directive test para</p>
+  <!-- <p [appBetterHighlight]="'purple'" [highlightColor]="'green'">Better directive test para</p> -->
+  <p appBetterHighlight [defaultColor]="'purple'" [highlightColor]="'green'">Better directive test para</p>
 </div>
