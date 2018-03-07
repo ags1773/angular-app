@@ -2,8 +2,15 @@
 **      Directives - Deep Dive     **
 *************************************
 
-Directives are of two types:
-  1) Attribute Directives (ngClass, ngStyle ...) - only change properties of the element
-  2) Structural Directives (*ngFor and *ngIf) - adds/removes the element from the DOM
+why is the second directive better?
+Because it uses 'renderer'. Angular is not restricted to running in the DOM. It can also work with service workers
+which are environments where you might not have access to the DOM. Therefore basic highlight, which tries to change the DOM,
+won't work
 
-### Both *ngFor and *ngIf can't be placed on the same component
+this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green');
+
+.setStyle() takes following arguments:
+1) element for which you want to set the style
+2) style you wanna set
+3) value of style
+4) flags (eg. !important)
