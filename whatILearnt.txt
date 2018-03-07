@@ -2,11 +2,7 @@
 **      Directives - Deep Dive     **
 *************************************
 
-@HostListener('mouseenter') mouseover(eventData: Event){
-  this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green');
-}
+Using renderer is fine, another simpler way is to use hostbinding
 
-@HostListener('mouseenter') - 'mouseenter' is one of many events that HostListener takes
-                              this can also be used with custom events
-mouseover(eventData: Event) {} -  mouseover() is the method which it calls on event. It can have any name
-                                  eventData is the data passed when evemt occurs. Not used here.
+@HostBinding('style.backgroundColor') - style.backgroundColor is the property of the host to which we want to bind
+                                        backgroundColor, not background-color because we're accessing DOM property
