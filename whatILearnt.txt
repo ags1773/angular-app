@@ -2,15 +2,11 @@
 **      Directives - Deep Dive     **
 *************************************
 
-why is the second directive better?
-Because it uses 'renderer'. Angular is not restricted to running in the DOM. It can also work with service workers
-which are environments where you might not have access to the DOM. Therefore basic highlight, which tries to change the DOM,
-won't work
+@HostListener('mouseenter') mouseover(eventData: Event){
+  this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green');
+}
 
-this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green');
-
-.setStyle() takes following arguments:
-1) element for which you want to set the style
-2) style you wanna set
-3) value of style
-4) flags (eg. !important)
+@HostListener('mouseenter') - 'mouseenter' is one of many events that HostListener takes
+                              this can also be used with custom events
+mouseover(eventData: Event) {} -  mouseover() is the method which it calls on event. It can have any name
+                                  eventData is the data passed when evemt occurs. Not used here.
