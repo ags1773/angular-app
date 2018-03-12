@@ -37,4 +37,15 @@
   <p appBasicHighlight>Custom directive test para</p>
   <!-- <p [appBetterHighlight]="'purple'" [highlightColor]="'green'">Better directive test para</p> -->
   <p appBetterHighlight [defaultColor]="'purple'" [highlightColor]="'green'">Better directive test para</p>
+
+  <label>Enter value 5,10,100
+    <input type="number" class="formControl" #inp>
+    <button class="btn btn-default" (click)="updateValue(inp.value)">Enter</button>
+  </label>
+  <div [ngSwitch]="value">
+    <p *ngSwitchCase="5">Value Is 5</p>
+    <p *ngSwitchCase="10">Value Is 10</p>
+    <p *ngSwitchCase="100">Value Is 100</p>
+    <p *ngSwitchDefault>Value Is Default</p>
+  </div>
 </div>

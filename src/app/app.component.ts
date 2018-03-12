@@ -12,4 +12,7 @@ export class AppComponent {
   onlyOdd = false;
   value = 5;
 
+  updateValue(val){
+    this.value = val;
+  }
 }
