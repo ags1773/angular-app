@@ -1,29 +1,27 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <button
-        class="btn btn-primary"
-        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
-      <br><br>
-      <ul class="list-group">
-        <li
-          class="list-group-item">
-        </li>
-      </ul>
-      <ng-template [ngIf]="onlyOdd">
-        <p>Only odd</p>
-      </ng-template>
-    </div>
-  </div>
-</div> -->
-
 <div class="container pt-3">
   <div class="row">
-    <div class="col-12">
+    <div class="col-5">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd"> {{ onlyOdd ? "Show all numbers" : "Only show odd numbers" }}
+      </button>
+    </div>
+  <div class="col-12 pt-3">
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let number of numbers" [ngStyle]="{backgroundColor: number%2 === 0 ? 'powderblue':'tomato'}">
-          {{ number }}
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item"
+              *ngFor="let even of evenNumbers"
+              [ngStyle]="{backgroundColor: number%2 !== 0 ? 'powderblue':'tomato'}">
+            {{ even }}
+          </li>
+        </div>
+        <div class="py-3">
+          <li class="list-group-item"
+          *ngFor="let odd of oddNumbers"
+          [ngStyle]="{backgroundColor: number%2 === 0 ? 'powderblue':'tomato'}">
+          {{ odd }}
         </li>
+      </div>
       </ul>
     </div>
   </div>

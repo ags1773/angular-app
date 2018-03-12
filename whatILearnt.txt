@@ -2,23 +2,34 @@
 **      Directives - Deep Dive     **
 *************************************
 
-Binding to directive properties:
+why the * for Structural Directives?
 
-@Input() defaultColor: string = 'transparent';
-@Input() highlightColor: string = 'tomato';
-.
-.
-<p appBetterHighlight [defaultColor]="'purple'" [highlightColor]="'green'">Better directive test para</p>
+************ 1 ****************
+<div *ngIf="!onlyOdd">
+  <li
+    class="list-group-item"
+    *ngFor="let even of evenNumbers"
+    [ngClass]="{odd: even % 2 !== 0}"
+    >
+    {{ even }}
+  </li>
+</div>
+********************************
 
-user can set default & highlight color from html using property binding.
-Angular figures out that 'defaultColor' and 'highlightColor' are properties of the custom directive 'appBetterHighlight'.
+************ 2 ****************
+<ng-template [ngIf]="!onlyOdd">
+  <div>
+    <li
+      class="list-group-item"
+      *ngFor="let even of evenNumbers"
+      [ngClass]="{odd: even % 2 !== 0}"
+      >
+      {{ even }}
+    </li>
+  </div>
+</ng-template>
+********************************
 
----------------------------------------
-Also note, this too works
-@Input('appBetterHighlight') defaultColor: string = 'transparent';
-.
-.
-<p [appBetterHighlight]="'purple'" [highlightColor]="'green'">Better directive test para</p>
 
-here, we are giving "@Input() defaultColor" an alias that's same as the custom directive's name i.e. "appBetterHighlight"
-So now, we can directly use property binding on the directive to pass defaultColor value i.e. [appBetterHighlight]="'purple'"
+behind the scenes, angular converts the *ngIf (part 1 above) into <ng-template [ngIf]=""> i.e. (part 2 above)
+*ngIf is just convinent to write, therefore it's available
