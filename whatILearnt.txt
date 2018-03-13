@@ -2,37 +2,18 @@
 **      Directives - Deep Dive     **
 *************************************
 
-Custom structural directives:
+Adding jquery and bootstrap scripts to an angular project isn't recommended.
 
-We've made an 'unless' directive, which is opposite of ngIf in the sense that it attaches the content to the DOM if the
-condition is false.
+Goal: make dropdown in recipe-detail component and navbar work without using bootstrap.js and jquery
 
---------------------------------------------------------------------------------
-We want to take the condition as input, and execute a method whenever the condition changes. So we use a setter
+Note: The tutorial uses bootstrap 3, in which adding/removing class "open" on the button element itself makes the dropdown
+  work. However, in bootstrap 4, it works differently
 
-@Input('appUnless') set unless(condition: boolean){
-  if(!condition){
-    //display template
-  } else{
-    //clear template
-  }
-}
+How to :
+- Although not recommended, adding class "show" to class "dropdown-menu" of a dropdown opens it; removing
+  it closes the dropdown
+- Create a custom directive, make it listen to click event on class "dropdown-toggle" and toggle class "show"
+  on class "dropdown-menu"
 
-Note that we're using alias 'appUnless', because that's the name of the directive that we're going to use in our HTML
---------------------------------------------------------------------------------
-In order for the directive to work, we need two things:
-  1) WHAT to display
-  2) WHERE in the DOM to display
-Both these can be injected
-
-<ng-template [ngIf]="!onlyOdd">
-  <li class="list-group-item"
-      *ngFor="let even of evenNumbers"
-      [ngStyle]="{backgroundColor: number%2 !== 0 ? 'powderblue':'tomato'}">
-    {{ even }}
-  </li>
-</ng-template>
-
-Solution to (1) -- use TemplateRef, we can get access to all the stuff within the <ng-template></ng-template> html tags
-Solution to (2) -- use ViewContainerRef to get the Location in the DOM where we place our template
---------------------------------------------------------------------------------
+In the current form, I'm able to add class 'show' to the button itself on which the directive is placed; but I can't
+figure out how to add/remove the class on a different element. Therefore the dropdowns aren't working currently!

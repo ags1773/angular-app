@@ -6,13 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // numbers = [1, 2, 3, 4, 5];
-  oddNumbers = [1, 3, 5];
-  evenNumbers = [2, 4];
-  onlyOdd = false;
-  value = 5;
+  showRecipe:boolean = true;
+  showShoppingList:boolean = false;
 
-  updateValue(val){
-    this.value = val;
+  onRecipesNavClicked(){
+    this.showRecipe = true;
+    this.showShoppingList = false;
+  }
+  onShoppingListNavClicked(){
+    this.showRecipe = false;
+    this.showShoppingList = true;
   }
 }
