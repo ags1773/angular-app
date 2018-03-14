@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Account } from './shared/account.model';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showRecipe:boolean = true;
-  showShoppingList:boolean = false;
+  accounts: Account[] = [
+    new Account('Mr. Benedict', 'Inactive'),
+    new Account('Garry', 'Active'),
+    new Account('test1234', 'Hidden')
+  ];
 
-  onRecipesNavClicked(){
-    this.showRecipe = true;
-    this.showShoppingList = false;
-  }
-  onShoppingListNavClicked(){
-    this.showRecipe = false;
-    this.showShoppingList = true;
+  addAccount(event){
+    this.accounts.push(new Account(event.name, event.status));
   }
 }

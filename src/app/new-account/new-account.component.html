@@ -1,0 +1,15 @@
+<form class="py-2"> <strong>New Account</strong>
+  <div class="form-row">
+    <div class="col-sm-6">
+      <input class="form-control" type="text" placeholder="Name" #name>
+    </div>
+    <div class="col-sm-6">
+      <select class="form-control" #status>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Hidden">Hidden</option>
+      </select>
+    </div>
+  </div>
+</form>
+<button class="btn btn-default btn-block" (click)="onAddAccount(name.value, status.value)">Add</button>
