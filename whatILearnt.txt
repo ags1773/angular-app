@@ -1,12 +1,7 @@
-******************************************
-**    Services - Dependancy Injection   **
-******************************************
+*************************************
+**    Services - AccountsService   **
+*************************************
 
-The 'account' component depends on the LoggingService class, as it uses the method from it.
-Angular's dependancy injector is used to inject an instance of the LoggingService class into our component.
+The app is now set to use AccountsService, which handles all the accounts data mamipulation, thus DRYing up the components.
 
-To do so, we must have following things:
-1) constructor(private loggingSrv: LoggingService) {} --> tells angular that we need an instance of the class LoggingService
-2) providers: [LoggingService]  --> tells angular how to create the service
-
-One of the advantages of DI is that this lets us stay in angular's ecosystem
+However, the app is broken (even though most code is fine) because of incorrect hierarchical injection of the AccountsService
