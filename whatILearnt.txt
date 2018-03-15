@@ -1,3 +1,37 @@
-***********************
-**      Services     **
-***********************
+********************************************
+**      Services - What is a service?     **
+********************************************
+- A service is re-usable bunch of code (which forms a logical unit) put within an object, which can be used by components.
+
+- Example: Retrieving data from database:
+    Coding this separately for every component results in repetation of code.
+    We can create a service for say a GET request, put it inside an object as a method, and re-use.
+    This frees up the component from repetative jobs like data reterieval
+
+--------------------------------------------------------------------------------
+Unlike a Component or Directive, we DO NOT add a @Service decorator.
+Service is just a typescript class, containing the necessary methods.
+
+This can be a service:
+
+export class LoggingService {
+  logMessage(message: string){
+    console.log("Logged Message --> " + messsage);
+  }
+}
+--------------------------------------------------------------------------------
+
+****************************************
+**  The WRONG way of using a service  **
+****************************************
+
+NOTE: THIS COMMIT USES A WRONG WAY OF USING THE SERVICE 'LoggingService'
+
+Although the above service is just a class, importing LoggingService and using it directly by creating a new
+instance of LoggingService is WRONG!!!
+Angular provides a better way of accessing services
+
+import { LoggingService } from "<path>"
+
+const service = new LoggingService();
+service.logMessage("test message 123");
