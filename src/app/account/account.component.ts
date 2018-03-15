@@ -10,15 +10,15 @@ import { LoggingService } from '../shared/logging.service';
 })
 export class AccountComponent implements OnInit {
   @Input() account: Account;
-  @Output() accStatusChange = new EventEmitter<Account>();
+  @Input() id: number;
+  @Output() accStatusChange = new EventEmitter<{id: number, newStatus: string}>();
 
   constructor(private loggingSrv: LoggingService) { }
 
   ngOnInit() { }
 
   changeAccStatus(newStatus){
-    this.accStatusChange.emit({name: this.account.name, status: newStatus});
-    // console.log('A server status changed, new status: ' + newStatus);
+    this.accStatusChange.emit({id: this.id, newStatus: newStatus});
     this.loggingSrv.logStatusChange(newStatus);
   }
 

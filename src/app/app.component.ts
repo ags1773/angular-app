@@ -16,4 +16,7 @@ export class AppComponent {
   addAccount(event){
     this.accounts.push(new Account(event.name, event.status));
   }
+  onStatusChange(updateInfo: {id: number, newStatus: string}){
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
 }

@@ -10,9 +10,10 @@
     <div class="col-12 col-lg-8 pt-3">
       <strong>Accounts:</strong>
       <app-account
-        *ngFor="let account of accounts; let i = index"
-        [account]=account
-        (accStatusChange)= "accounts[i].status = $event.status"
+        *ngFor = "let account of accounts; let i = index"
+        [account] = 'account'
+        [id] = 'i'
+        (accStatusChange)= "onStatusChange($event)"
         >
       </app-account>
     </div>
