@@ -1,7 +1,26 @@
-*************************************
-**    Services - AccountsService   **
-*************************************
+********************************************
+**    Services - hierarchical injection   **
+********************************************
 
-The app is now set to use AccountsService, which handles all the accounts data mamipulation, thus DRYing up the components.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!  IMPORTANT   !!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-However, the app is broken (even though most code is fine) because of incorrect hierarchical injection of the AccountsService
+Our app is fine, we're just using services incorrectly!
+
+If we provide a service to a component, Angular creates an instance of the service for that component and ALL
+ITS CHILD components AND it's children components (i.e. the components children, grand-children receive the SAME instance).
+
+Also, if we provide a service to a component, and again provide the same service to its child/grand-child; a NEW instance
+is provided to the child/grand-child (old instance is over-written)
+
+In our case, we're providing AccountsService to app.component
+But we're also providing AccountsService separately to app.component's children (account.component and new-account.component)
+Therefore two separate instances of AccountsService are provided to account.component and new-account.component
+Therefore, the app seems broken!
+
+To make account.component and new-account.component share the same instance of AccountsService
+  - remove 'AccountsService' from the providers[] array
+  - keep it everywhere else. Leave it in the constructor and import
+
+Now, the app will work!
