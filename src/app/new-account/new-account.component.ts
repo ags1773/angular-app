@@ -9,7 +9,11 @@ import { AccountsService } from "../shared/accounts.service";
 })
 export class NewAccountComponent implements OnInit {
 
-  constructor(private accountsSrv: AccountsService) { }
+  constructor(private accountsSrv: AccountsService) {
+    this.accountsSrv.statusUpdated.subscribe(function(status:string){
+      alert('New status -> ' + status);
+    });
+  }
 
   ngOnInit() { }
 
