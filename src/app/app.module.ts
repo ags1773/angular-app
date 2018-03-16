@@ -4,25 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { NewAccountComponent } from './new-account/new-account.component';
-import { AccountComponent } from './account/account.component';
-
-import { AccountsService } from './shared/accounts.service'
-import { LoggingService } from './shared/logging.service'
-
+import { ActiveUsersComponent } from './active-users/active-users.component';
+import { InactiveUsersComponent } from './inactive-users/inactive-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewAccountComponent,
-    AccountComponent
+    ActiveUsersComponent,
+    InactiveUsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [AccountsService, LoggingService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
