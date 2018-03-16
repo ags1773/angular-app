@@ -1,26 +1,18 @@
-********************************************
-**    Services - hierarchical injection   **
-********************************************
+************************************************
+**    Injecting service into another service  **
+************************************************
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!  IMPORTANT   !!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.module.ts file is the topmost level where we can inject a service. Inject it here and the service will be available everywhere
 
-Our app is fine, we're just using services incorrectly!
+here, we have
+1) Injected AccountsService in app.module and removed the providers[AccountsService] from everywhere else, so same instance
+    of AccountsService is passed to all
+2) Removed LoggingService from everywhere altogether and placed it inside the AccountsService
 
-If we provide a service to a component, Angular creates an instance of the service for that component and ALL
-ITS CHILD components AND it's children components (i.e. the components children, grand-children receive the SAME instance).
 
-Also, if we provide a service to a component, and again provide the same service to its child/grand-child; a NEW instance
-is provided to the child/grand-child (old instance is over-written)
-
-In our case, we're providing AccountsService to app.component
-But we're also providing AccountsService separately to app.component's children (account.component and new-account.component)
-Therefore two separate instances of AccountsService are provided to account.component and new-account.component
-Therefore, the app seems broken!
-
-To make account.component and new-account.component share the same instance of AccountsService
-  - remove 'AccountsService' from the providers[] array
-  - keep it everywhere else. Leave it in the constructor and import
-
-Now, the app will work!
+** Putting LoggingService Inside AccountsService **
+1) provide 'LoggingService' in app.module
+2) inside the AccountsService, import LoggingService and add it's constructor
+3) add @Injectable() decorator.
+      This needs to be added to the component in which we want to inject a second component
+      It's basically metadata that tells angular to inject LoggingService into the AccountsService
