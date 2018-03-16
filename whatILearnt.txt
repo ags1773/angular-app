@@ -1,18 +1,6 @@
-********************************************************
-**  Using a service for cross-component communication **
-********************************************************
+****************************
+**  Services - Assignment **
+****************************
 
-A service can be used by components to communicate with each other.
-
-Here, <app-account> emits an event whenever the user changes an account status.
-<app-new-account> catches this event and throws an alert()
-
-As we are using the AccountsService for inter-component communication, we don't need app.component to catch the event
-then pass it on to <app-new-account> using property binding. We can directly subscribe to the event in the <app-new-account>
-
---------------------------------------------------------------------------------
-this.accountsSrv.statusUpdated.subscribe(function(status:string){
-  alert('New status -> ' + status);
-});
-
-statusUpdated.subscribe() method seems to be the typescript equivalent to listening to (statusUpdated) event in HTML
+UsersService - provided in app.component.ts
+CounterService - injected into UsersService, therefore provided in app.module.ts
