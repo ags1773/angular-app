@@ -1,5 +1,5 @@
-import { Recipe } from "../recipes/recipes.model"
-import { INGREDIENTS } from "./mock-ingredients"
+import { Recipe } from "../recipes/recipes.model";
+import { INGREDIENTS } from "./mock-ingredients";
 
 export const RECIPES: Recipe[] = [
   new Recipe("Paneer", "This is some paneer", "https://images.unsplash.com/photo-1462037629520-2a7c6feac7f4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b9695fd866bb2ebcd365a3155245220f&auto=format&fit=crop&w=1085&q=80", [INGREDIENTS[2],INGREDIENTS[5],INGREDIENTS[14]]),

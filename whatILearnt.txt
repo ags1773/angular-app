@@ -1,6 +1,29 @@
-****************************
-**  Services - Assignment **
-****************************
+********************************************
+**  Using Services in our recipes projekt **
+********************************************
 
-UsersService - provided in app.component.ts
-CounterService - injected into UsersService, therefore provided in app.module.ts
+We have used two services:
+  1) RecipesService - provided in recipes.component.ts
+  2) ShoppingListService - provided in app.module.ts
+
+getAllRecipes(){
+  return RECIPES.slice();   -----> this returns a copy of the RECIPES array, so that we don't accidently mess it up
+}
+
+As getShoppingList() displays only a copy of the shoppingList, when we add a new ingredient to the shoppingList we can't
+expect to see the changed shopping list.
+
+Solution is either to
+
+        getShoppingList(){
+          return ShoppingList;
+        }
+
+instead of
+
+        getShoppingList(){
+          return ShoppingList.slice();
+        }
+
+but a BETTER SOLUTION is to emit an event (ingredientsChanged) whenever we add a new ingredient to the shopping list and
+subscribe to it in the shopping-list.component.ts file.

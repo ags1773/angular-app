@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from './users.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [UsersService]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
+  showRecipe:boolean = true;
+  showShoppingList:boolean = false;
 
-  constructor(private usrService: UsersService){}
-
-  ngOnInit(){}
-
+  onRecipesNavClicked(){
+    this.showRecipe = true;
+    this.showShoppingList = false;
+  }
+  onShoppingListNavClicked(){
+    this.showRecipe = false;
+    this.showShoppingList = true;
+  }
 }
