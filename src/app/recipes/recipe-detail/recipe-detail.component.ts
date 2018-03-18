@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Recipe } from "../recipes.model";
 import { RecipesService } from '../recipes.service';
 
@@ -8,6 +8,7 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
+  @ViewChild('dropdownMenu') dropdownMenu:ElementRef;
   recipe: Recipe;
 
   constructor(private recipesSrv: RecipesService) { }
@@ -17,5 +18,7 @@ export class RecipeDetailComponent implements OnInit {
       (clickedRecipe: Recipe) => {this.recipe = clickedRecipe}
     );
   }
-
+  toggleDropdown(){
+    this.dropdownMenu.nativeElement.classList.toggle('show');
+  }
 }
