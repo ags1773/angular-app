@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Recipe } from "../recipes.model";
 import { RecipesService } from '../recipes.service';
+import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 
 @Component({
   selector: 'app-recipe-detail',

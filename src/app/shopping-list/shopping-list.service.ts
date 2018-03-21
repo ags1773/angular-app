@@ -13,6 +13,10 @@ export class ShoppingListService {
     ShoppingList.push(newIndredient);
     this.ingredientsChanged.emit(ShoppingList.slice());
   }
+  addIngredients(newIngredients: Ingredient[]){
+    Array.prototype.push.apply(ShoppingList, newIngredients);
+    this.ingredientsChanged.emit(ShoppingList.slice());
+  }
   // removeIngredient(id:number){
   //   ShoppingList.splice(id, 1);
   // }
