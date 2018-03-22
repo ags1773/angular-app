@@ -1,8 +1,18 @@
-*******************
-**    Routing    **
-*******************
+*******************************
+**    Routing - routerLink   **
+*******************************
 
-The correct way: using routerLink
+using routerLink paths:
 
--faster
--keeps app state
+Assume you're on path localhost:4200/servers
+
+<a routerLink='servers'>Link</a>   --> Relative path - will take you to localhost:4200/servers/servers
+<a routerLink='/servers'>Link</a>  --> Absolute path - you'll stay on localhost:4200/servers
+<a routerLink='./servers'>Link</a> --> Relative path - will take you to localhost:4200/servers/servers
+<a routerLink='../users/something'>Link</a>  --> behaves like folder navigation. Will take you to localhost:4200/users/something
+
+--------------------------------------------------------------------------------
+
+<a class="nav-link" [routerLink]="['/users','something','abcd']">Link</a>   --> this is another way of using routerLink
+                                                      It'll take you to localhost:4200/users/something/abcd
+                                                      notice the '/users' absolute path.. all others are relative in the array
