@@ -2,17 +2,21 @@
 **    Routing - routerLink   **
 *******************************
 
-using routerLink paths:
+Adding CSS class to active element using routerLinkActive
 
-Assume you're on path localhost:4200/servers
+routerLinkActive = 'activeClass':
+- Used to add an active class to the active element
+- can be placed on the element itself or its wrapper
 
-<a routerLink='servers'>Link</a>   --> Relative path - will take you to localhost:4200/servers/servers
-<a routerLink='/servers'>Link</a>  --> Absolute path - you'll stay on localhost:4200/servers
-<a routerLink='./servers'>Link</a> --> Relative path - will take you to localhost:4200/servers/servers
-<a routerLink='../users/something'>Link</a>  --> behaves like folder navigation. Will take you to localhost:4200/users/something
+here, we have placed the routerLinkActive on the wrapper of <a></a>
+<li role="presentation" class="nav-item" routerLinkActive="active">
+  <a class="nav-link active" routerLink="/">Home</a>
+</li>
+<li role="presentation" class="nav-item" routerLinkActive="active">
+  <a class="nav-link" routerLink="/servers">Servers</a>
+</li>
+<li role="presentation" class="nav-item" routerLinkActive="active">
+  <a class="nav-link" [routerLink]="['/users']">Users</a>
+</li>
 
---------------------------------------------------------------------------------
-
-<a class="nav-link" [routerLink]="['/users','something','abcd']">Link</a>   --> this is another way of using routerLink
-                                                      It'll take you to localhost:4200/users/something/abcd
-                                                      notice the '/users' absolute path.. all others are relative in the array
+However, this will result in the 'Home' link always being 'active'...Not what we want
