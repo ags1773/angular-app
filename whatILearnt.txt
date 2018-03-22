@@ -2,11 +2,7 @@
 **    Routing    **
 *******************
 
-In the current configuration, i.e.
+The correct way: using routerLink
 
-<a class="nav-link active" href="/">Home</a>
-<a class="nav-link" href="/servers">Servers</a>
-<a class="nav-link" href="/users">Users</a>
-
-the routes work, but the app re-starts every time we click a link.
-This shouldn't happen
+-faster
+-keeps app state
