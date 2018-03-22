@@ -2,21 +2,27 @@
 **    Routing - routerLink   **
 *******************************
 
-Adding CSS class to active element using routerLinkActive
+[routerLinkActiveOptions]="{exact: true}
 
-routerLinkActive = 'activeClass':
-- Used to add an active class to the active element
-- can be placed on the element itself or its wrapper
+Previously, the home tab was always active, because the home path was always present in the link.
+By setting [routerLinkActiveOptions]="{exact: true}" on the 'home' path, we solve the problem.
 
-here, we have placed the routerLinkActive on the wrapper of <a></a>
-<li role="presentation" class="nav-item" routerLinkActive="active">
-  <a class="nav-link active" routerLink="/">Home</a>
+<li role="presentation" class="nav-item">
+  <a  class="nav-link"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">Home
+  </a>
 </li>
-<li role="presentation" class="nav-item" routerLinkActive="active">
-  <a class="nav-link" routerLink="/servers">Servers</a>
+<li role="presentation" class="nav-item">
+  <a  class="nav-link"
+      routerLink="/servers"
+      routerLinkActive="active">Servers
+  </a>
 </li>
-<li role="presentation" class="nav-item" routerLinkActive="active">
-  <a class="nav-link" [routerLink]="['/users']">Users</a>
+<li role="presentation" class="nav-item">
+  <a  class="nav-link"
+      [routerLink]="['/users']"
+      routerLinkActive="active">Users
+  </a>
 </li>
-
-However, this will result in the 'Home' link always being 'active'...Not what we want
