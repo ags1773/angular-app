@@ -1,28 +1,8 @@
-*******************************
-**    Routing - routerLink   **
-*******************************
+******************
+**    Routing   **
+******************
 
-[routerLinkActiveOptions]="{exact: true}
+We can programatically route somewhere using typescript, like for example re-route somewhere using typescript after doing
+some calculations after pressing a button
 
-Previously, the home tab was always active, because the home path was always present in the link.
-By setting [routerLinkActiveOptions]="{exact: true}" on the 'home' path, we solve the problem.
-
-<li role="presentation" class="nav-item">
-  <a  class="nav-link"
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{exact: true}">Home
-  </a>
-</li>
-<li role="presentation" class="nav-item">
-  <a  class="nav-link"
-      routerLink="/servers"
-      routerLinkActive="active">Servers
-  </a>
-</li>
-<li role="presentation" class="nav-item">
-  <a  class="nav-link"
-      [routerLink]="['/users']"
-      routerLinkActive="active">Users
-  </a>
-</li>
+For this, we must inject the router in our typescript class.
